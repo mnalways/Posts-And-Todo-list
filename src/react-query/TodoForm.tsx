@@ -2,28 +2,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useRef } from "react";
 import { Todo } from "../hooks/UseTodos";
+import { useAddTodo } from "../hooks/useAddTodo";
 
 const TodoForm = () => {
-  const endPoint = "/todos";
   const ref = useRef<HTMLInputElement>(null);
-  const queryClient = useQueryClient();
-  const updateTodo = useMutation<Todo, Error, Todo>({
-    mutationFn: (todo: Todo) =>
-      axios
-        .post<Todo>(`https://jsonplaceholder.typicode.com${endPoint}`, todo)
-        .then((res) => res.data),
-    onSuccess: (UpdatedTodo) => {
-      // approach1: Invalidate cache
-      // queryClient.invalidateQueries(['todo']);
+  const onAdd = () => {
+    if (ref.current) ref.current.value = "";
+  };
 
-      // approach2: Update cache
-      queryClient.setQueryData<Todo[]>(["todos"], (todos) => [
-        UpdatedTodo,
-        ...(todos || []),
-      ]);
-      if (ref.current) ref.current.value = "";
-    },
-  });
+  const updateTodo = useAddTodo(onAdd);
 
   return (
     <>

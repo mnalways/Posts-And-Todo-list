@@ -1,3 +1,4 @@
+import { CACHE_KEY_TODOS } from "../react-query/constants";
 import UseData from "./UseData";
 
 export interface Todo {
@@ -7,6 +8,7 @@ export interface Todo {
   completed: boolean;
 }
 
-const UseTodos = () => UseData<Todo[]>({ endPoint: "/todos", key: ["todos"] });
+const UseTodos = () =>
+  UseData<Todo[]>({ endPoint: "/todos", key: CACHE_KEY_TODOS });
 
 export default UseTodos;
