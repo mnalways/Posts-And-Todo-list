@@ -1,8 +1,4 @@
-import useAuth from "./hooks/useAuth";
-
-// interface x {
-//   dispatch: React.Dispatch<LoginAction | LogoutAction>;
-// }
+import useAuth from "./useAuth";
 
 const LoginStatus = () => {
   const { user, dispatch } = useAuth();
