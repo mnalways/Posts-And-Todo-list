@@ -3,12 +3,12 @@ export interface Task {
   title: string;
 }
 
-interface AddTaskAction {
+export interface AddTaskAction {
   type: "ADD";
   task: Task;
 }
 
-interface DeleteTaskAction {
+export interface DeleteTaskAction {
   type: "DELETE";
   taskID: number;
 }
