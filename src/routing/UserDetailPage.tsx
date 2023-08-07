@@ -8,7 +8,7 @@ const UserDetailPage = () => {
   // console.log('searchParams.get("name")', searchParams.get("name"));
   // console.log("searchParams.toString()", searchParams.toString());
 
-  return <p>User</p>;
+  return <p>{`User ${params.id}`}</p>;
 };
 
 export default UserDetailPage;

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const UserListPage = () => {
   const users = [
@@ -7,14 +7,19 @@ const UserListPage = () => {
     { id: 3, name: "Alice" },
   ];
   return (
-    <ul className="list-group">
-      {users.map((user) => (
-        <li className="list-group-item" key={user.id}>
-          <Link to={`${user.id}`}>{user.name}</Link>
-          {/* <a href="#">{user.name}</a> */}
-        </li>
-      ))}
-    </ul>
+    <div className="row">
+      <ul className="list-group col">
+        {users.map((user) => (
+          <li className="list-group-item" key={user.id}>
+            <Link to={`${user.id}`}>{user.name}</Link>
+            {/* <a href="#">{user.name}</a> */}
+          </li>
+        ))}
+      </ul>
+      <div className="col">
+        <Outlet />
+      </div>
+    </div>
   );
 };
 
